@@ -18,6 +18,7 @@
     "prepublish": "npm run clean & npm run build"
   },
   "dependencies": {
+    "babel-runtime": "^6.23.0",
     "caporal": "^0.3.0",
     "inquirer": "^3.0.1",
     "sinon": "2.0.0-pre.3",
