@@ -1,0 +1,41 @@
+{
+  "name": "stacker-cli",
+  "version": "0.1.0",
+  "description": "Stacker CLI",
+  "license": "MIT",
+  "main": "dist/stacker.js",
+  "bin": {
+    "stacker": "dist/stacker.js"
+  },
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "build:dev": "nodemon --watch src --exec \"npm run build && chmod +x dist/stacker.js\"",
+    "test": "NODE_ENV=testing mocha tests --require babel-register",
+    "test:dev": "npm run test -- --watch",
+    "lint": "eslint src tests",
+    "lint:fix": "npm run lint -- --fix",
+    "clean": "rimraf dist",
+    "prepublish": "npm run clean & npm run build"
+  },
+  "dependencies": {
+    "caporal": "^0.3.0",
+    "inquirer": "^3.0.1",
+    "sinon": "2.0.0-pre.3",
+    "stacker-core": "^0.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-plugin-transform-object-rest-spread": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-latest": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "chai": "^3.5.0",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0",
+    "rimraf": "^2.5.4",
+    "sinon": "2.0.0-pre.5"
+  }
+}
