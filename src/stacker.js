@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import program from 'caporal';
+import updateNotifier from 'update-notifier';
 
 import pkg from '../package.json';
 
@@ -16,9 +17,15 @@ import stop from './commands/stop';
 import unlink from './commands/unlink';
 
 
-//
+// caporal hack
+
 program.STRING = value => (typeof value === 'string' ? value : null);
-//
+
+// update notifications
+
+updateNotifier({ pkg }).notify();
+
+// register commands
 
 program.version(pkg.version);
 

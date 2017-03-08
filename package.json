@@ -31,7 +31,8 @@
     "caporal": "^0.3.0",
     "inquirer": "^3.0.1",
     "sinon": "2.0.0-pre.3",
-    "stacker-core": "^0.1.0"
+    "stacker-core": "^0.1.0",
+    "update-notifier": "^2.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.22.2",
