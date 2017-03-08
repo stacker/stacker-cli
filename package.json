@@ -1,8 +1,17 @@
 {
   "name": "stacker-cli",
+  "repository": "StackerHQ/stacker-cli",
   "version": "0.1.1",
-  "description": "Stacker CLI",
   "license": "MIT",
+  "description": "Stacker CLI",
+  "keywords": [
+    "stacker",
+    "stacker-cli"
+  ],
+  "authors": [
+    "Andrei Canta <andrei@hexbridge.com>",
+    "Kinga Iakab <kinga@hexbridge.com>"
+  ],
   "main": "dist/stacker.js",
   "bin": {
     "stacker": "dist/stacker.js"
