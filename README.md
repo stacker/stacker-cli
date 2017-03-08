@@ -2,7 +2,7 @@ Stacker
 =======
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/StackerHQ.svg?style=social?maxAge=2592000)](https://twitter.com/StackerHQ)
-[![Version](https://img.shields.io/npm/v/stacker.svg)](https://www.npmjs.com/package/stacker-cli)
+[![Version](https://img.shields.io/npm/v/stacker-cli.svg)](https://www.npmjs.com/package/stacker-cli)
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/StackerHQ/stacker-cli/blob/master/LICENSE)
 [![dependencies](https://david-dm.org/StackerHQ/stacker-cli.svg)](https://david-dm.org/StackerHQ/stacker-cli)
 [![devDependency Status](https://david-dm.org/StackerHQ/stacker-cli/dev-status.svg)](https://david-dm.org/StackerHQ/stacker-cli#info=devDependencies)
