@@ -15,6 +15,7 @@ import run from './commands/run';
 import start from './commands/start';
 import stop from './commands/stop';
 import unlink from './commands/unlink';
+import shell from './commands/shell';
 
 
 // caporal hack
@@ -39,5 +40,6 @@ run.register(program);
 start.register(program);
 stop.register(program);
 unlink.register(program);
+shell.register(program);
 
 program.parse(process.argv);
