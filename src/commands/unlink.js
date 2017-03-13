@@ -1,6 +1,8 @@
 import inquirer from 'inquirer';
 import { Links } from 'stacker-core';
 
+import { catchErrors } from '../utils';
+
 
 function confirmUnlink() {
   return inquirer.prompt({
@@ -29,7 +31,7 @@ async function handle(args, options, logger) {
 function register(program) {
   program
     .command('unlink', 'Unlink project')
-    .action(handle);
+    .action(catchErrors(handle));
 }
 
 export default { register };

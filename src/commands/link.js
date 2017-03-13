@@ -2,6 +2,8 @@ import path from 'path';
 import inquirer from 'inquirer';
 import { Links, titleCase } from 'stacker-core';
 
+import { catchErrors } from '../utils';
+
 
 function promptProjectName() {
   return inquirer.prompt([
@@ -42,7 +44,7 @@ async function handle(args, options, logger) {
 function register(program) {
   program
     .command('link', 'Link project')
-    .action(handle);
+    .action(catchErrors(handle));
 }
 
 export default { register };

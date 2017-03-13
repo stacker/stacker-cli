@@ -1,15 +1,15 @@
 import { getStackManager, catchErrors } from '../utils';
 
 
-async function handle(args) {
+async function handle(args, options) {
   const manager = await getStackManager();
-  manager.restart(args.service);
+  manager.up(options.detached);
 }
 
 function register(program) {
   program
-    .command('restart', 'Restart project')
-    .argument('[service]', 'Service name')
+    .command('up', 'Create & start project')
+    .option('-d, --detached', 'Detached mode', program.BOOL, false)
     .action(catchErrors(handle));
 }
 

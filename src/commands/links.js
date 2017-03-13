@@ -1,5 +1,7 @@
 import { Links } from 'stacker-core';
 
+import { catchErrors } from '../utils';
+
 
 async function handle(args, options, logger) {
   const links = await Links.all();
@@ -17,7 +19,7 @@ async function handle(args, options, logger) {
 function register(program) {
   program
     .command('links', 'List linked projects')
-    .action(handle);
+    .action(catchErrors(handle));
 }
 
 export default { register };

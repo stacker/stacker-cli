@@ -1,22 +1,15 @@
-import { StackConfig, StackManager } from 'stacker-core';
+import { getStackManager, catchErrors } from '../utils';
 
 
-async function handle(args, options, logger) {
-  const config = await StackConfig.loadRecursive(process.cwd());
-  const manager = new StackManager(config);
-
-  if (options.dir) manager.setBuildPath(options.dir);
-
-  await manager.stop();
-
-  logger.info('Done.');
+async function handle() {
+  const manager = await getStackManager();
+  manager.stop();
 }
 
 function register(program) {
   program
     .command('stop', 'Stop project')
-    .option('--dir', 'Build path', program.STRING)
-    .action(handle);
+    .action(catchErrors(handle));
 }
 
 export default { register };

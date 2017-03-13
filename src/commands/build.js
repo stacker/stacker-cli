@@ -1,24 +1,19 @@
-import { StackConfig, StackManager } from 'stacker-core';
+import { getStackManager, catchErrors } from '../utils';
 
 
-async function handle(args, options, logger) {
-  const config = await StackConfig.loadRecursive(process.cwd());
-  const manager = new StackManager(config);
+async function handle(args, options) {
+  const manager = await getStackManager();
 
-  if (options.dir) manager.setBuildPath(options.dir);
   if (options.ip) manager.setIpAddress(options.ip);
 
-  await manager.build();
-
-  logger.info('Project was built.');
+  manager.build();
 }
 
 function register(program) {
   program
     .command('build', 'Build project')
-    .option('--dir', 'Build path', program.STRING)
     .option('--ip', 'IP address', program.STRING)
-    .action(handle);
+    .action(catchErrors(handle));
 }
 
 export default { register };

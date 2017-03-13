@@ -1,10 +1,12 @@
 import inquirer from 'inquirer';
 
-import { StackConfig, StackManager } from 'stacker-core';
+import { getStackManager, catchErrors } from '../utils';
 
 
 async function getServiceName(stack) {
-  const choices = stack.services.values().filter(service => service.shell).map(service => service.name);
+  const choices = stack.services.values()
+    .filter(service => service.shell)
+    .map(service => service.name);
   const answers = await inquirer.prompt({
     type: 'list',
     name: 'service',
@@ -14,16 +16,10 @@ async function getServiceName(stack) {
   return answers.service;
 }
 
-async function handle(args, options, logger) {
-  const config = await StackConfig.loadRecursive(process.cwd());
-  const manager = new StackManager(config);
+async function handle(args) {
+  const manager = await getStackManager();
   const service = args.service || await getServiceName(manager.stack);
-
-  try {
-    manager.shell(service);
-  } catch (error) {
-    logger.info(error.message);
-  }
+  manager.shell(service);
 }
 
 function register(program) {
@@ -31,7 +27,7 @@ function register(program) {
     .command('shell', 'Open shell')
     .alias('sh')
     .argument('[service]', 'Service name')
-    .action(handle);
+    .action(catchErrors(handle));
 }
 
 export default { register };

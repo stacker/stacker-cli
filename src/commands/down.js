@@ -1,15 +1,14 @@
 import { getStackManager, catchErrors } from '../utils';
 
 
-async function handle(args) {
+async function handle() {
   const manager = await getStackManager();
-  manager.restart(args.service);
+  manager.down();
 }
 
 function register(program) {
   program
-    .command('restart', 'Restart project')
-    .argument('[service]', 'Service name')
+    .command('down', 'Stop & remove project')
     .action(catchErrors(handle));
 }
 
