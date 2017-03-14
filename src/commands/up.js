@@ -3,7 +3,10 @@ import { getStackManager, catchErrors } from '../utils';
 
 async function handle(args, options) {
   const manager = await getStackManager();
-  manager.up(options.detached);
+
+  const build = await manager.build();
+
+  return build.on('exit', () => manager.up(options.detached));
 }
 
 function register(program) {

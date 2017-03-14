@@ -13,13 +13,15 @@ async function getServiceName(stack) {
     message: 'Select service',
     choices,
   });
+
   return answers.service;
 }
 
 async function handle(args) {
   const manager = await getStackManager();
   const service = args.service || await getServiceName(manager.stack);
-  manager.shell(service);
+
+  return manager.shell(service);
 }
 
 function register(program) {

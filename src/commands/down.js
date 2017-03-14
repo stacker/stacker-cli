@@ -3,7 +3,8 @@ import { getStackManager, catchErrors } from '../utils';
 
 async function handle() {
   const manager = await getStackManager();
-  manager.down();
+
+  return manager.down();
 }
 
 function register(program) {

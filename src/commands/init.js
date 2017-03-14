@@ -1,5 +1,5 @@
 import inquirer from 'inquirer';
-import { LaravelWizard } from 'stacker-core';
+import { StackConfig, LaravelWizard } from 'stacker-core';
 
 import { getStackConfig, catchErrors } from '../utils';
 
@@ -34,7 +34,9 @@ async function getOptions(stack) {
 }
 
 async function handle(args, options, logger) {
-  const config = await getStackConfig();
+  if (await getStackConfig()) throw new Error('The project is already initialized');
+
+  const config = new StackConfig();
   const stack = options.stack || await getStackName();
 
   config.stack = stack;

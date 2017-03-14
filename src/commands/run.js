@@ -24,7 +24,7 @@ async function handle(args) {
   const manager = await getStackManager();
   const command = args.command || await getRunnableName(manager.stack);
 
-  manager.run(command);
+  return manager.run(command);
 }
 
 function register(program) {

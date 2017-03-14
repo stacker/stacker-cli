@@ -6,7 +6,7 @@ async function handle(args, options) {
 
   if (options.ip) manager.setIpAddress(options.ip);
 
-  manager.build();
+  return manager.build();
 }
 
 function register(program) {
