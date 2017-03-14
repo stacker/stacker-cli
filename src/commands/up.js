@@ -6,7 +6,7 @@ async function handle(args, options) {
 
   const build = await manager.build();
 
-  return build.on('exit', () => manager.up(options.detached));
+  build.on('exit', () => manager.up(options.detached));
 }
 
 function register(program) {
