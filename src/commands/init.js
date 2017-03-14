@@ -39,10 +39,9 @@ async function handle(args, options, logger) {
   if (await getStackConfig()) throw new Error('The project is already initialized');
 
   const config = new StackConfig();
-  const stack = options.stack || await getStackName();
 
-  config.stack = stack;
-  config.options = options.defaults ? null : await getOptions(stack);
+  config.stack = args.stack || await getStackName();
+  config.options = options.defaults ? null : await getOptions(config.stack);
 
   await config.save(process.cwd());
 
