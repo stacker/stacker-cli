@@ -1,5 +1,5 @@
 import inquirer from 'inquirer';
-import { StackConfig, LaravelWizard } from 'stacker-core';
+import { StackConfig, WordpressWizard, LaravelWizard } from 'stacker-core';
 
 import { getStackConfig, catchErrors } from '../utils';
 
@@ -10,6 +10,7 @@ async function getStackName() {
     name: 'stack',
     message: 'Select the stack',
     choices: [
+      { value: 'wordpress', name: 'Wordpress' },
       { value: 'laravel', name: 'Laravel' },
       { value: 'rails', name: 'Ruby on Rails' },
       { value: 'django', name: 'Django' },
@@ -19,6 +20,7 @@ async function getStackName() {
 }
 
 function getWizard(stack) {
+  if (stack === 'wordpress') return WordpressWizard;
   if (stack === 'laravel') return LaravelWizard;
 }
 
