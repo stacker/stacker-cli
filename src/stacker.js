@@ -10,11 +10,14 @@ import eject from './commands/eject';
 import init from './commands/init';
 import link from './commands/link';
 import links from './commands/links';
-import restart from './commands/restart';
 import run from './commands/run';
+import up from './commands/up';
+import down from './commands/down';
 import start from './commands/start';
 import stop from './commands/stop';
+import restart from './commands/restart';
 import unlink from './commands/unlink';
+import shell from './commands/shell';
 
 
 // caporal hack
@@ -34,10 +37,13 @@ eject.register(program);
 init.register(program);
 link.register(program);
 links.register(program);
-restart.register(program);
 run.register(program);
+up.register(program);
+down.register(program);
 start.register(program);
 stop.register(program);
+restart.register(program);
 unlink.register(program);
+shell.register(program);
 
 program.parse(process.argv);

@@ -1,35 +1,37 @@
 import inquirer from 'inquirer';
-import { StackConfig, StackManager } from 'stacker-core';
+
+import { getStackManager, catchErrors } from '../utils';
 
 
 async function getRunnableName(stack) {
   const choices = stack.runnables.entries().map(([name, ejectable]) => {
     return { value: name, name: ejectable.label };
   });
+
+  if (!choices.length) throw new Error('This project has no runnables.');
+
   const answers = await inquirer.prompt({
     type: 'list',
     name: 'command',
     message: 'Select command',
     choices,
   });
+
   return answers.command;
 }
 
-async function handle(args, options, logger) {
-  const config = await StackConfig.loadRecursive(process.cwd());
-  const manager = new StackManager(config);
+async function handle(args) {
+  const manager = await getStackManager();
   const command = args.command || await getRunnableName(manager.stack);
 
-  await manager.run(command);
-
-  logger.info('Done.');
+  return manager.run(command);
 }
 
 function register(program) {
   program
     .command('run', 'Run command')
     .argument('[command]', 'Runnable name')
-    .action(handle);
+    .action(catchErrors(handle));
 }
 
 export default { register };

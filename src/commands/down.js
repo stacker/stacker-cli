@@ -4,12 +4,12 @@ import { getStackManager, catchErrors } from '../utils';
 async function handle() {
   const manager = await getStackManager();
 
-  return manager.stop();
+  return manager.down();
 }
 
 function register(program) {
   program
-    .command('stop', 'Stop project')
+    .command('down', 'Stop & remove project')
     .action(catchErrors(handle));
 }
 

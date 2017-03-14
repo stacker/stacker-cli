@@ -1,6 +1,8 @@
 import inquirer from 'inquirer';
 import { Links } from 'stacker-core';
 
+import { catchErrors } from '../utils';
+
 
 function confirmUnlink() {
   return inquirer.prompt({
@@ -11,7 +13,8 @@ function confirmUnlink() {
 }
 
 async function handle(args, options, logger) {
-  const link = await Links.find({ path: process.cwd() });
+  const projectPath = process.cwd();
+  const link = await Links.find({ projectPath });
 
   if (link === null) {
     logger.info('The project is not linked at all.');
@@ -28,7 +31,7 @@ async function handle(args, options, logger) {
 function register(program) {
   program
     .command('unlink', 'Unlink project')
-    .action(handle);
+    .action(catchErrors(handle));
 }
 
 export default { register };

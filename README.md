@@ -47,10 +47,10 @@ Before going further, make sure you `cd` into the root path of your project (`cd
   - setup your chosen domain name in `/etc/hosts`
   - add the project to the projects list
 
-3. Start your application
+3. Build and start your application
 
   ```bash
-  $ stacker start
+  $ stacker up
   ```
 
   After this you will be able to reach your application using the domain name you choose previously. (eg. `test-project.dev`)
@@ -74,9 +74,18 @@ Generates `stacker.yaml` based on your responses.
 - adds your chosen domain name in `/etc/hosts`
 - adds the project to the projects list
 
-### `$ stacker link`
+### `$ stacker unlink`
 
 Does the opposite of `stacker link`.
+
+### `$ stacker up`
+
+Builds and starts the project.
+
+| Type | Name | Description | Required |
+| --- | --- | --- | --- |
+| option | `--ip` | IP address | no |
+| option | `--detached` (`-d`) | Detached mode | no |
 
 ### `$ stacker build`
 
@@ -84,33 +93,31 @@ Builds the project.
 
 | Type | Name | Description | Required |
 | --- | --- | --- | --- |
-| option | `--dir` | Build path | no |
 | option | `--ip` | IP address | no |
 
 ### `$ stacker start`
 
-Builds the project and starts the application.
-
-| Type | Name | Description | Required |
-| --- | --- | --- | --- |
-| option | `--dir` | Build path | no |
-| option | `--ip` | IP address | no |
+Starts the application.
 
 ### `$ stacker stop`
 
 Stops the application.
 
-| Type | Name | Description | Required |
-| --- | --- | --- | --- |
-| option | `--dir` | Build path | no |
-
 ### `$ stacker restart`
 
 Restarts the application.
 
+### `$ stacker down`
+
+Removes and stops the application.
+
+### `$ stacker shell`
+
+Opens an interactive shell for a given service.
+
 | Type | Name | Description | Required |
 | --- | --- | --- | --- |
-| option | `--dir` | Build path | no |
+| argument | `[service]` | Service name | no |
 
 ### `$ stacker run`
 

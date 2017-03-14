@@ -4,15 +4,15 @@ import { getStackManager, catchErrors } from '../utils';
 async function handle(args, options) {
   const manager = await getStackManager();
 
-  if (options.ip) manager.setIpAddress(options.ip);
+  const build = await manager.build();
 
-  return manager.build();
+  return build.on('exit', () => manager.up(options.detached));
 }
 
 function register(program) {
   program
-    .command('build', 'Build project')
-    .option('--ip', 'IP address', program.STRING)
+    .command('up', 'Create & start project')
+    .option('-d, --detached', 'Detached mode', program.BOOL, false)
     .action(catchErrors(handle));
 }
 

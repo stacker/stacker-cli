@@ -2,6 +2,8 @@ import path from 'path';
 import inquirer from 'inquirer';
 import { Links, titleCase } from 'stacker-core';
 
+import { catchErrors } from '../utils';
+
 
 function promptProjectName() {
   return inquirer.prompt([
@@ -21,7 +23,8 @@ function promptProjectName() {
 }
 
 async function handle(args, options, logger) {
-  const link = await Links.find({ path: process.cwd() });
+  const projectPath = process.cwd();
+  const link = await Links.find({ projectPath });
 
   if (link !== null) {
     logger.info('This project is already linked.');
@@ -29,8 +32,8 @@ async function handle(args, options, logger) {
     const answers = await promptProjectName();
     const data = {
       name: answers.name,
-      projectPath: process.cwd(),
       host: answers.host,
+      projectPath,
     };
     const link = await Links.create(data);
 
@@ -41,7 +44,7 @@ async function handle(args, options, logger) {
 function register(program) {
   program
     .command('link', 'Link project')
-    .action(handle);
+    .action(catchErrors(handle));
 }
 
 export default { register };

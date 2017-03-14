@@ -1,6 +1,8 @@
 import inquirer from 'inquirer';
 import { StackConfig, LaravelWizard } from 'stacker-core';
 
+import { getStackConfig, catchErrors } from '../utils';
+
 
 async function getStackName() {
   const answers = await inquirer.prompt({
@@ -20,24 +22,25 @@ function getWizard(stack) {
   if (stack === 'laravel') return LaravelWizard;
 }
 
-async function getOptions(wizard) {
+async function getOptions(stack) {
+  const wizard = getWizard(stack);
+
+  if (!wizard) return {};
+
   const questions = wizard.getQuestions();
   const answers = await inquirer.prompt(questions);
+
   return wizard.makeOptions(answers);
 }
 
 async function handle(args, options, logger) {
-  if (await StackConfig.load(process.cwd())) {
-    logger.info('This project is already initialized.');
-    return;
-  }
+  if (await getStackConfig()) throw new Error('The project is already initialized');
 
   const config = new StackConfig();
   const stack = options.stack || await getStackName();
-  const wizard = getWizard(stack);
 
   config.stack = stack;
-  config.options = await getOptions(wizard);
+  config.options = options.defaults ? null : await getOptions(stack);
 
   await config.save(process.cwd());
 
@@ -49,7 +52,7 @@ function register(program) {
     .command('init', 'Init project')
     .argument('[stack]', 'Stack type', ['laravel'])
     .option('-y, --defaults', 'Use default options', program.BOOL, false)
-    .action(handle);
+    .action(catchErrors(handle));
 }
 
 export default { register };
