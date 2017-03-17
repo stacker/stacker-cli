@@ -1,5 +1,3 @@
-import { ChildProcess } from 'child_process';
-
 import { StackConfig, StackManager } from 'stacker-core';
 
 export function getStackConfig(path = process.cwd()) {
@@ -17,11 +15,7 @@ export async function getStackManager(path = process.cwd()) {
 export function catchErrors(handle) {
   return async function (args, options, logger) {
     try {
-      const result = await handle(args, options, logger);
-
-      if (result instanceof ChildProcess) {
-        result.on('exit', code => process.exit(code));
-      }
+      await handle(args, options, logger);
     } catch (error) {
       logger.error(error.message);
     }
