@@ -4,9 +4,9 @@ import { getStackManager, catchErrors } from '../utils';
 async function handle(args, options) {
   const manager = await getStackManager();
 
-  const build = await manager.build();
+  await manager.build();
 
-  build.on('exit', () => manager.up(options.detached));
+  return manager.up(options.detached);
 }
 
 function register(program) {
