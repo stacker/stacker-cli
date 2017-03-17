@@ -12,8 +12,6 @@ async function getStackName() {
     choices: [
       { value: 'wordpress', name: 'Wordpress' },
       { value: 'laravel', name: 'Laravel' },
-      { value: 'rails', name: 'Ruby on Rails' },
-      { value: 'django', name: 'Django' },
     ],
   });
   return answers.stack;
