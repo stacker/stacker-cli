@@ -3,15 +3,15 @@ Stacker
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/StackerHQ.svg?style=social?maxAge=2592000)](https://twitter.com/StackerHQ)
 [![Version](https://img.shields.io/npm/v/stacker-cli.svg)](https://www.npmjs.com/package/stacker-cli)
-[![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/StackerHQ/stacker-cli/blob/master/LICENSE)
-[![dependencies](https://david-dm.org/StackerHQ/stacker-cli.svg)](https://david-dm.org/StackerHQ/stacker-cli)
-[![devDependency Status](https://david-dm.org/StackerHQ/stacker-cli/dev-status.svg)](https://david-dm.org/StackerHQ/stacker-cli#info=devDependencies)
+[![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/stacker/stacker-cli/blob/master/LICENSE)
+[![dependencies](https://david-dm.org/stacker/stacker-cli.svg)](https://david-dm.org/stacker/stacker-cli)
+[![devDependency Status](https://david-dm.org/stacker/stacker-cli/dev-status.svg)](https://david-dm.org/stacker/stacker-cli#info=devDependencies)
 
 > Simple Application Environments
 
 Stacker is a simple tool for defining application environments, aka *stacks*. Each stack is optimized for **development** and for **production** use as well. Stacker is built on top of Docker and Docker Compose as an abstraction layer. The main paradigm followed in designing Stacker was **convention over configuration**.
 
-## :checkered_flag: Instalation
+## :checkered_flag: Installation
 
 Install the CLI app globally using NPM.
 
