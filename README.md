@@ -44,33 +44,33 @@ stacker --version
 
 Before going further, make sure you `cd` into the root path of your project (`cd ~/Projects/test-project`).
 
-1. Generate the `stacker.yaml` file
+1. **Generate the `stacker.yaml` file**
 
-  ```bash
-  $ stacker init
-  ```
+    ```bash
+    $ stacker init
+    ```
 
-  If your project already has a `stacker.yaml` file, this step is not required.
+    If your project already has a `stacker.yaml` file, this step is not required.
 
-2. Setup the project on your local machine
+2. **Setup the project on your local machine**
 
-  ```bash
-  $ stacker link
-  ```
+    ```bash
+    $ stacker link
+    ```
 
-  This will do several things
+    This will do several things
 
-  - create a local IP alias (eg. `127.20.17.1`)
-  - setup your chosen domain name in `/etc/hosts`
-  - add the project to the projects list
+    - create a local IP alias (eg. `127.20.17.1`)
+    - setup your chosen domain name in `/etc/hosts`
+    - add the project to the projects list
 
-3. Build and start your application
+3. **Build and start your application**
 
-  ```bash
-  $ stacker up
-  ```
+    ```bash
+    $ stacker up
+    ```
 
-  After this you will be able to reach your application using the domain name you choose previously. (eg. `test-project.dev`)
+    After this you will be able to reach your application using the domain name you choose previously. (eg. `test-project.dev`)
 
 ## :book: Commands
 
