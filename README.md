@@ -7,9 +7,26 @@ Stacker
 [![dependencies](https://david-dm.org/stacker/stacker-cli.svg)](https://david-dm.org/stacker/stacker-cli)
 [![devDependency Status](https://david-dm.org/stacker/stacker-cli/dev-status.svg)](https://david-dm.org/stacker/stacker-cli#info=devDependencies)
 
-> Simple Application Environments
+> Docker Compose Templates
 
 Stacker is a simple tool for defining application environments, aka *stacks*. Each stack is optimized for **development** and for **production** use as well. Stacker is built on top of Docker and Docker Compose as an abstraction layer. The main paradigm followed in designing Stacker was **convention over configuration**.
+
+## :tv: Demo
+
+<table>
+  <tr>
+    <td><a href="https://www.youtube.com/watch?v=QA-AHdydEt4">
+      <img height="100" src="https://s3-us-west-2.amazonaws.com/svgporn.com/logos/laravel.svg">
+    </a></td>
+    <td><a href="https://www.youtube.com/watch?v=wali9yZR8x0">
+      <img height="100" src="https://s3-us-west-2.amazonaws.com/svgporn.com/logos/wordpress-icon.svg">
+    </a></td>
+  </tr>
+  <tr>
+    <td><a href="https://www.youtube.com/watch?v=QA-AHdydEt4">Laravel</a></td>
+    <td><a href="https://www.youtube.com/watch?v=wali9yZR8x0">Wordpress</a></td>
+  </tr>
+</table>
 
 ## :checkered_flag: Installation
 
