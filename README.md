@@ -30,7 +30,7 @@ Stacker is a simple tool for defining application environments, aka *stacks*. Ea
 
 ## :checkered_flag: Installation
 
-> Requirements: `node 6+`, `docker 17+`, `docker-compose 1.10+`.
+> Requirements: `node 6+`, `docker 17+`, `docker-compose 1.10+`. Tested succesfully on Mac OS and Ubuntu.
 
 Install the CLI app globally using NPM.
 
