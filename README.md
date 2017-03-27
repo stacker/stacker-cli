@@ -30,6 +30,8 @@ Stacker is a simple tool for defining application environments, aka *stacks*. Ea
 
 ## :checkered_flag: Installation
 
+> Requirements: `node 6+`, `docker 17+`, `docker-compose 1.10+`.
+
 Install the CLI app globally using NPM.
 
 ```bash
@@ -72,89 +74,15 @@ Before going further, make sure you `cd` into the root path of your project (`cd
 
     After this you will be able to reach your application using the domain name you choose previously. (eg. `test-project.dev`)
 
-## :book: Commands
+## :hand: Add your favorite stack!
 
-Here are the sub-commands for `stacker` CLI.
+Is your stack missing? Please open an issue and we'll take care of it. Since we're not experts in all stacks, your input and guidance will be helpful to make a top notch stack. For the moment, we will keep all the stacks inside the official repos just to make sure they all follow best practices.
 
-### `$ stacker init`
+Here is a list of the stacks we want to add with your help: Symfony, Ruby on Rails, Django, Meteor, Play, Ghost. If you have other stacks in mind just let us know.
 
-Generates `stacker.yaml` based on your responses.
+## :memo: Documentation
 
-| Type | Name | Description | Required |
-| --- | --- | --- | --- |
-| argument | `[stack]` | Stack name | no |
-| option | `-y | --defaults` | Use default options | no |
-
-### `$ stacker link`
-
-- creates a local IP alias (eg. `127.20.17.1`)
-- adds your chosen domain name in `/etc/hosts`
-- adds the project to the projects list
-
-### `$ stacker unlink`
-
-Does the opposite of `stacker link`.
-
-### `$ stacker up`
-
-Builds and starts the project.
-
-| Type | Name | Description | Required |
-| --- | --- | --- | --- |
-| option | `--ip` | IP address | no |
-| option | `--detached` (`-d`) | Detached mode | no |
-
-### `$ stacker build`
-
-Builds the project.
-
-| Type | Name | Description | Required |
-| --- | --- | --- | --- |
-| option | `--ip` | IP address | no |
-
-### `$ stacker start`
-
-Starts the application.
-
-### `$ stacker stop`
-
-Stops the application.
-
-### `$ stacker restart`
-
-Restarts the application.
-
-### `$ stacker down`
-
-Removes and stops the application.
-
-### `$ stacker shell`
-
-Opens an interactive shell for a given service.
-
-| Type | Name | Description | Required |
-| --- | --- | --- | --- |
-| argument | `[service]` | Service name | no |
-
-### `$ stacker run`
-
-Executes a pre-defined shell command.
-
-| Type | Name | Description | Required |
-| --- | --- | --- | --- |
-| argument | `[command]` | Runnable name | no |
-
-### `$ stacker eject`
-
-Ejects a config file so you'll be able to customize it.
-
-| Type | Name | Description | Required |
-| --- | --- | --- | --- |
-| argument | `[file]` | Ejectable name | no |
-
-### `$ stacker links`
-
-Displays all the linked projects.
+For full CLI reference, checkout the [DOCUMENTATION.md](DOCUMENTATION.md) file.
 
 ## :scroll: License
 
